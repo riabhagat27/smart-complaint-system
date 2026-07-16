@@ -12,6 +12,10 @@ import csv
 import io
 import os
 
+from fastapi.responses import FileResponse
+
+
+
 # ================= DATABASE =================
 
 DATABASE_URL = "sqlite:///./complaint.db"
@@ -29,7 +33,9 @@ Base = declarative_base()
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
+@app.get("/")
+async def home():
+    return FileResponse("static/login.html")
 if not os.path.exists("uploads"):
     os.makedirs("uploads")
 
