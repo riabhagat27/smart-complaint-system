@@ -27,8 +27,8 @@ async function register() {
         alert("Registered successfully");
 
         if (role === "admin") window.location.href = "admin.html";
-        else if (role === "student" || role === "teacher") window.location.href = "student.html";
-        else window.location.href = "staff.html";
+        else if (role === "student" || role === "teacher") window.location.href = "/static/student.html";
+        else window.location.href = "/static/staff.html";
 
     } else {
         alert(data.detail);
@@ -55,9 +55,9 @@ async function login() {
     const data = await res.json();
     localStorage.setItem("user", JSON.stringify(data));
 
-    if (data.role === "admin") window.location.href = "admin.html";
-    else if (data.role === "student" || data.role === "teacher") window.location.href = "student.html";
-    else window.location.href = "staff.html";
+    if (data.role === "admin") window.location.href = "/static/admin.html";
+    else if (data.role === "student" || data.role === "teacher") window.location.href = "/static/student.html";
+    else window.location.href = "/static/staff.html";
 }
 
 // ================= CREATE COMPLAINT =================
@@ -312,7 +312,7 @@ function downloadAllCSV() {
 // ================= LOGOUT =================
 function logout() {
     localStorage.removeItem("user");
-    window.location.href = "login.html";
+    window.location.href = "/static/login.html";
 }
 
 // ================= SUBCATEGORY =================
