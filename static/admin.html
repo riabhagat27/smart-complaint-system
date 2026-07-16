@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="loadAllComplaints()">
+
+<div class="container">
+    <h3>🔔 Notifications</h3>
+
+    <button onclick="loadNotifications()">Show Notifications</button>
+
+    <div id="notifications"></div>
+    <hr>
+
+    <h2>Admin Dashboard</h2>
+    <!-- DASHBOARD STATS START -->
+<h3>Dashboard Stats</h3>
+
+<div class="stats">
+    <div class="card">
+        <h3>Total</h3>
+        <p id="totalCount">0</p>
+    </div>
+
+    <div class="card">
+        <h3>Resolved</h3>
+        <p id="resolvedCount">0</p>
+    </div>
+
+    <div class="card">
+        <h3>Pending</h3>
+        <p id="pendingCount">0</p>
+    </div>
+</div>
+
+<!-- GRAPH -->
+<canvas id="complaintChart" width="400" height="200"></canvas>
+
+<!-- DASHBOARD STATS END -->
+    <button onclick="loadStaffList()">Load Staff</button>
+    <ul id="staffList"></ul>
+
+    <button onclick="loadAllComplaints()">Load Complaints</button>
+    <button onclick="downloadAllCSV()">Download CSV</button>
+    <button onclick="logout()">🚪 Logout</button>
+    <div id="complaintList"></div>
+
+</div>
+<div id="staffList"></div>
+<h3>Filter Complaints</h3>
+
+<select id="filterStatus">
+  <option value="">All Status</option>
+  <option value="Open">Open</option>
+  <option value="Assigned">Assigned</option>
+  <option value="Resolved">Resolved</option>
+</select>
+
+<select id="filterCategory">
+  <option value="">All Category</option>
+  <option value="Academic">Academic</option>
+  <option value="Hostel">Hostel</option>
+  <option value="Infrastructure">Infrastructure</option>
+  <option value="Administrative">Administrative</option>
+</select>
+
+<button onclick="filterComplaints()">Apply Filter</button>
+<div id="allComplaints"></div>
+<script src="script.js"></script>
+
+</body>
+</html>

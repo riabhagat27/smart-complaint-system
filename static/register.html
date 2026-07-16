@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+
+    <!-- Link CSS properly -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Register</h2>
+
+    <input id="username" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
+
+    <label>Select Role</label>
+    <select id="role">
+     <option value="">Select Role</option>
+     <option value="student">Student</option>
+     <option value="teacher">Teacher</option>
+      <option value="hostel staff">Hostel Staff</option>
+     <option value="infrastructure staff">Infrastructure Staff</option>
+     <option value="academic staff">Academic Staff</option>
+     <option value="administrative staff">Administrative Staff</option>
+     <option value="admin">Admin</option>
+   </select>
+
+   <button onclick="register()">Register</button>
+
+    <!-- LOGIN LINK (important UX fix) -->
+    <p>
+        Already have an account?
+        <a href="login.html">Login</a>
+    </p>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

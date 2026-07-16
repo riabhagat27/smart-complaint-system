@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="loadUserComplaints()">
+
+<div class="container">
+    
+
+    <h2>Submit Complaint</h2>
+
+    <!-- TITLE -->
+    
+    <label>Title</label>
+    <input id="title" placeholder="Enter complaint title">
+
+    <!-- CATEGORY DROPDOWN -->
+    <label>Category</label>
+    <select id="category" required>
+        <option value="">Select Category</option>
+        <option value="Academic">Academic</option>
+        <option value="Hostel">Hostel</option>
+        <option value="Infrastructure">Infrastructure</option>
+        <option value="Administrative">Administrative</option>
+    </select>
+
+    <!-- SUBCATEGORY DROPDOWN -->
+    <label>Sub Category</label>
+    <select id="subcategory" required>
+        <option value="">Select Sub Category</option>
+    </select>
+
+    <!-- DESCRIPTION -->
+    
+    <label>Description</label>
+    <textarea id="description" placeholder="Describe your issue"></textarea>
+
+    <!-- PRIORITY DROPDOWN -->
+    <label>Priority</label>
+    <select id="priority" required>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+        <option value="Critical">Critical</option>
+    </select>
+
+    <!-- FILE UPLOAD -->
+    <input type="file" id="fileInput">
+
+    <!-- SUBMIT -->
+    <button onclick="createComplaint()">Submit Complaint</button>
+
+    <!-- ACTION BUTTONS -->
+    <div style="display:flex; gap:10px;">
+      <button onclick="loadUserComplaints()">Refresh</button>
+      <button onclick="downloadUserCSV()">Download</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+
+    <!-- COMPLAINT LIST -->
+    <h3>Your Complaints</h3>
+    <button onclick="toggleNotifications()" id="notifBtn">
+    🔔 Show Notifications
+    </button>
+
+    <div id="notifications" style="display:none;"></div>
+    <hr>
+    <div id="complaintList"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+<!-- SUBCATEGORY LOGIC -->
+<script>
+const subcategories = {
+    Hostel: ["Maintenance", "Mess", "Roommate Issues", "Other"],
+    Academic: ["Faculty", "Exam", "Time Table", "Other"],
+    Infrastructure: ["Campus Facilities", "WiFi/Internet", "Labs", "Other"],
+    Administrative: ["Fees", "Certificates", "Documents", "Other"]
+};
+
+document.getElementById("category").addEventListener("change", function () {
+    const category = this.value;
+    const sub = document.getElementById("subcategory");
+
+    sub.innerHTML = "<option value=''>Select Sub Category</option>";
+
+    if (subcategories[category]) {
+        subcategories[category].forEach(item => {
+            let option = document.createElement("option");
+            option.value = item;
+            option.innerText = item;
+            sub.appendChild(option);
+        });
+    }
+});
+</script>
+
+</body>
+</html>

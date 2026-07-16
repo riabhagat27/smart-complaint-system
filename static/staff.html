@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="loadAssignedComplaints()">
+
+<div class="container">
+    
+    <h2>Staff Dashboard</h2>
+    
+    <!-- STAFF INFO -->
+    <p><b>Staff ID:</b> <span id="staffId"></span></p>
+
+    <!-- ACTION BUTTONS -->
+    <button onclick="loadAssignedComplaints()">🔄 Refresh Complaints</button>
+    <button onclick="downloadStaffCSV()">📥 Download CSV</button>
+    <button onclick="logout()">🚪 Logout</button>
+
+    <hr>
+
+    <!-- COMPLAINT LIST -->
+    <h3>Assigned Complaints</h3>
+    <button onclick="toggleNotifications()" id="notifBtn">
+    🔔 Show Notifications
+    </button>
+
+    <div id="notifications" style="display:none;"></div>
+    <hr>
+    <div id="assignedList"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+    // ✅ Show staff ID from localStorage
+    const staff = JSON.parse(localStorage.getItem("user"));
+    document.getElementById("staffId").innerText = staff?.id || "N/A";
+</script>
+
+</body>
+</html>
